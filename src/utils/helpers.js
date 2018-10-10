@@ -89,101 +89,21 @@ export const initDb = async () => {
 export const initMockDb = async () => {
   const emptyBefore = true
 
-  let Company = require('../models/Company').default
-  let CouponType = require('../models/CouponType').default
-  let Video = require('../models/Video').default
-  let Question = require('../models/Question').default
-  let Answer = require('../models/Answer').default
-  let Story = require('../models/Story').default
-  let User = require('../models/User').default
+  let WebhookConntent = require('../models/WebhookConntent').default
 
   if (emptyBefore) {
-    await Company.deleteMany({})
-    await CouponType.deleteMany({})
-    await Video.deleteMany({})
-    await Question.deleteMany({})
-    await Answer.deleteMany({})
-    await Story.deleteMany({})
-    await User.deleteMany({})
+    await WebhookConntent.deleteMany({})
   }
 
-  let correctAnswers1 = await Answer.create([
-    { text: 'Grün' },
-    { text: 'Weiss' },
+  //Test Data
+  let testwebhooks = await WebhookConntent.create([
+    {
+       UserId: 'KLUGHILUSdgluiweiuzg',
+       WebhookConntent: 'Webhook Conntent test'
+   },
+    {
+       UserId: 'KLUGHILUsdSdgluiweiuzg',
+       WebhookConntent: 'Webhook Conntent test2'
+   }
   ])
-  let wrongAnswers1 = await Answer.create([
-    { text: 'Schwarz' },
-    { text: 'Blau' },
-    { text: 'Rot' },
-    { text: 'Braun' },
-  ])
-  let correctAnswers2 = await Answer.create([
-    { text: 'Fahrrad fahren' },
-  ])
-  let wrongAnswers2 = await Answer.create([
-    { text: 'Karten spielen' },
-    { text: 'Fussball spielen' },
-    { text: 'Fliegen schlagen' },
-  ])
-
-  let question1 = await Question.create({
-    question: 'Was war die Farbe des Energydrinks im Video?',
-    correctAnswers: correctAnswers1,
-    wrongAnswers: wrongAnswers1,
-  })
-  let question2 = await Question.create({
-    question: 'Was tat das Kind im Video?',
-    correctAnswers: correctAnswers2,
-    wrongAnswers: wrongAnswers2,
-  })
-
-  let video1 = await Video.create({
-    title: 'Die Entstehung eines Energydrinks',
-    src: 'https://www.youtube.com/watch?v=IbiN9xldVlM',
-    lengthInSeconds: 149,
-    questions: [
-      question1,
-    ],
-  })
-  let video2 = await Video.create({
-    title: 'Widerstandsfähigkeit der Blocher Bikes',
-    src: 'https://www.youtube.com/watch?v=RgVUhJwGlmQ',
-    lengthInSeconds: 29,
-    questions: [
-      question2,
-    ],
-  })
-
-  let company1 = await Company.create({ name: 'Valora' })
-
-  let couponType1 = await CouponType.create({
-    hash: generateHash(),
-    name: 'OK.- Energy',
-    description: 'Ein gratis Energydrink',
-    company: company1,
-    active: true,
-    masterExpiryDate: + new Date('2019-01-01T00:00:00'),
-    expiryHours: 3 * 24,
-    totalStock: 10,
-    availableStock: 10,
-    videos: [
-      video1,
-      video2,
-    ],
-  })
-  let couponType2 = await CouponType.create({
-    hash: generateHash(),
-    name: 'OK.- Kaffee',
-    description: '50% Rabatt auf ein Kaffee',
-    company: company1,
-    active: true,
-    masterExpiryDate: + new Date('2019-01-01T00:00:00'),
-    expiryHours: 3 * 24,
-    totalStock: 10,
-    availableStock: 10,
-    videos: [
-      video1,
-      video2,
-    ],
-  })
 }

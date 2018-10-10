@@ -22,8 +22,8 @@ const WebhookConntent = mongoose.model('WebhookConntent', WebhookConntentSchema)
 WebhookConntent.GetAllWebhooks = async (query) => {
   let Conntent = await WebhookConntent.findOne(query)
   if (!Conntent) return null
-
-  Conntent.stories = await Story.find({ Conntent: Conntent._id })
+  //Query ??
+  Conntent.Webhooks = await Webhook.find({ Conntent: Conntent._id })
   return Conntent
 }
 

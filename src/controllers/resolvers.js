@@ -7,8 +7,8 @@ import { generateHash, newFlowFromCouponType, sendSmsForStory } from '../utils/h
 
 export default {
   Query: {
-    WebhookByUser: async (_id) => {
-      return (await WebhookConntent.findOne(_id))
+    WebhookByUser: async (_, { userid }) => {
+      return (await WebhookConntent.findOne({UserId: userid}))
     },
   },
   // Mutation: {

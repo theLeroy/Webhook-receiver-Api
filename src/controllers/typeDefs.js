@@ -7,5 +7,4 @@ export default
 
 type Query {
   WebhookByUser(userid: String): WebhookConntent
-  hello: String
 }`

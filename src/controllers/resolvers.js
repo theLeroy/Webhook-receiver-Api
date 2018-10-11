@@ -11,6 +11,9 @@ export default {
       return (await WebhookConntent.findOne({UserId: userid}))
     },
   },
-  // Mutation: {
-  // },
+  Mutation: {
+    NewWebhook: async (_, { userid, intTime, WConntent}) => {
+      return (await WebhookConntent.findOne({UserId: userid}))
+    },
+  },
 }

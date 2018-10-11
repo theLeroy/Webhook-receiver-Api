@@ -13,6 +13,10 @@ export const WebhookConntentSchema = new Schema({
     type: String,
     required: true
   },
+  intTime: {
+    type: String,
+    required: true
+  },
   WebhookConntent: {
     type: String,
     required: true

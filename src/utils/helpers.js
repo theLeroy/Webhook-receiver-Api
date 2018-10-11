@@ -99,18 +99,22 @@ export const initMockDb = async () => {
   let testwebhooks = await WebhookConntent.create([
     {
        UserId: 'KLUGHILUSdgluiweiuzg',
+       intTime: 981237123,
        WebhookConntent: 'Webhook Conntent test 1'
    },
     {
        UserId: 'sadsda',
+       intTime: 981237123,
        WebhookConntent: 'Webhook Cokajusgdasidugnntent test 2'
    },
     {
        UserId: 'sdsdsdsdsd',
+       intTime: 981237123,
        WebhookConntent: 'Webhook Conntent test 3'
    },
     {
        UserId: 'KLUGHILUsdSdgluiweiuzg',
+       intTime: 981237123,
        WebhookConntent: 'Webhook Conntent test 4'
    }
   ])

@@ -90,9 +90,13 @@ export const initMockDb = async () => {
   const emptyBefore = true
 
   let WebhookConntent = require('../models/WebhookConntent').default
+  let Users = require('../models/Users').default
+  let WebhookLinks = require('../models/WebhookLinks').default
 
   if (emptyBefore) {
     await WebhookConntent.deleteMany({})
+    await Users.deleteMany({})
+    await WebhookLinks.deleteMany({})
   }
 
   //Test Data
@@ -117,5 +121,23 @@ export const initMockDb = async () => {
        intTime: 981237123,
        WebhookConntent: 'Webhook Conntent test 4'
    }
+  ])
+
+
+  let testWebhookLinks = await WebhookLinks.create([
+    {
+      LinkHash: 'aöslkjdhkjlwnoi3niuns'
+    }
+  ])
+
+  let testUsers = await Users.create([
+    {
+      UserId: 'KLUGHILUsdSdgluiweiuzg',
+      LoginToken: 'Nisd02h81n89',
+      Email: 'test@email.com',
+      WebhookLinks: [
+        testWebhookLinks,
+      ]
+    }
   ])
 }

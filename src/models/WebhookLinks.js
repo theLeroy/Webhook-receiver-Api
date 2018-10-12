@@ -1,29 +1,23 @@
 import mongoose from 'mongoose'
-import config from '../config'
+import uniqueValidator from 'mongoose-unique-validator'
+
 
 const Schema = mongoose.Schema
 
-export const WebhookConntentSchema = new Schema({
+export const WebhookLinksShema = new Schema({
   _id: {
     type: Schema.Types.ObjectId,
     required: true,
     auto: true
   },
-  UserId: {
+  LinkHash: {
     type: String,
-    required: true
-  },
-  intTime: {
-    type: Number,
-    required: true
-  },
-  WebhookConntent: {
-    type: String,
-    required: true
-  },
+    required: true,
+  }
 })
+ .plugin(uniqueValidator)
 
-const WebhookConntent = mongoose.model('WebhookConntent', WebhookConntentSchema)
+const WebhookLinks = mongoose.model('WebhookLinks', WebhookLinksShema)
 
 // WebhookConntent.GetAllWebhooks = async (query) => {
 //   // let Conntent = await WebhookConntent.findOne(query)
@@ -36,5 +30,5 @@ const WebhookConntent = mongoose.model('WebhookConntent', WebhookConntentSchema)
 //   return output;
 // }
 
-export default WebhookConntent
+export default WebhookLinks
 // export default mongoose.model('WebhookConntent', WebhookConntentSchema)

@@ -12,8 +12,13 @@ export default {
     },
   },
   Mutation: {
-    NewWebhook: async (_, { userid, intTime, WConntent}) => {
-      return (await WebhookConntent.findOne({UserId: userid}))
+    NewWebhook: async (_, { uid, WConntent}) => {
+      return (await WebhookConntent.create(
+        {
+          UserId: uid,
+          intTime: + new Date(),
+          WebhookConntent: WConntent
+        }))
     },
   },
 }

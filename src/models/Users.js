@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
-import WebhookLinks, { WebhookLinksShema } from './WebhookLinks'
 import config from '../config'
 
 
@@ -23,10 +22,17 @@ export const UsersShema = new Schema({
   Email: {
     type: String,
   },
-  WebhookLinks: {
-    type: WebhookLinks,
-    required: true
-  }
+  WebhookLinks: { type: [{
+    _id: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      auto: true
+    },
+    LinkHash: {
+      type: String,
+      required: true,
+    }
+   }]}
 })
 .plugin(uniqueValidator)
 

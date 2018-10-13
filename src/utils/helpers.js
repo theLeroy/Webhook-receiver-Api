@@ -91,12 +91,10 @@ export const initMockDb = async () => {
 
   let WebhookConntent = require('../models/WebhookConntent').default
   let Users = require('../models/Users').default
-  let WebhookLinks = require('../models/WebhookLinks').default
 
   if (emptyBefore) {
     await WebhookConntent.deleteMany({})
     await Users.deleteMany({})
-    await WebhookLinks.deleteMany({})
   }
 
   //Test Data
@@ -124,20 +122,51 @@ export const initMockDb = async () => {
   ])
 
 
-  let testWebhookLinks = await WebhookLinks.create([
-    {
-      LinkHash: 'aöslkjdhkjlwnoi3niuns'
-    }
-  ])
-
   let testUsers = await Users.create([
     {
       UserId: 'KLUGHILUsdSdgluiweiuzg',
       LoginToken: 'Nisd02h81n89',
       Email: 'test@email.com',
       WebhookLinks: [
-        testWebhookLinks,
-      ]
+      {
+        LinkHash: '1111',
+      },
+      {
+        LinkHash: '2222',
+      },
+      {
+        LinkHash: '3333',
+      }]
+    },
+    {
+      UserId: '99999',
+      LoginToken: 'Nisd902h81n89',
+      Email: 'te9st@ema99il.co9m',
+      WebhookLinks: [
+      {
+        LinkHash: '99',
+      },
+      {
+        LinkHash: '99',
+      },
+      {
+        LinkHash: '99',
+      }]
+    },
+    {
+      UserId: '123',
+      LoginToken: '123',
+      Email: 'test@123.com',
+      WebhookLinks: [
+      {
+        LinkHash: '000',
+      },
+      {
+        LinkHash: '0',
+      },
+      {
+        LinkHash: '00',
+      }]
     }
   ])
 }

@@ -1,3 +1,6 @@
+import config from '../../config'
+import SaveToDb from './SavetoDB.js'
+
 var app = require('http').createServer(handler);
 var statusCode = 200;
 
@@ -14,7 +17,14 @@ function handler (req, res) {
     req.on('end', function() {
       console.log('Received body data:');
       console.log(data.toString());
+      //Db
+
+      SaveToDb.SaveWHtoDB(data)
+
+      //Flie
+ // var fs = require('fs');fs.writeFile("./webHooksDB", data, function(err) {if(err) {return console.log(err);}console.log("The file was saved!");});
     });
+
   }
 
   res.writeHead(statusCode, {'Content-Type': 'text/plain'});

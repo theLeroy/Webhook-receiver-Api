@@ -1,6 +1,7 @@
 import logger from './utils/logger'
 import config from './config'
 import server from './controllers'
+import webhook from './utils/Webhook/Webhook.js'
 
 logger.logInfo(`ENVIRONMENT: ${config.env}`)
 logger.logInfo(`VERSION: ${config.version}`)

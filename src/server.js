@@ -11,6 +11,7 @@ logger.logInfo(`DATABASE URL: ${config.database.url}`)
 server.start({
   port: config.server.port,
   endpoint: config.server.endpoints.graphql,
+  webhook: config.server.endpoints.webhook,
   subscriptions: config.server.endpoints.subscriptions,
   playground: config.server.endpoints.playground
 }, () => logger.logInfo(`Server is running on localhost:${config.server.port}`))

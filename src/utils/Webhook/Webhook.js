@@ -1,3 +1,5 @@
+const https = require('https');
+
 import config from '../../config'
 import SaveToDb from './SavetoDB.js'
 
@@ -14,6 +16,7 @@ function handler (req, res) {
       data += chunk;
     });
 
+
     req.on('end', function() {
       console.log('Received body data:');
       console.log(data.toString());
@@ -25,6 +28,10 @@ function handler (req, res) {
  // var fs = require('fs');fs.writeFile("./webHooksDB", data, function(err) {if(err) {return console.log(err);}console.log("The file was saved!");});
     });
 
+  } else if (req.method == "GET") {
+    console.log(req.url);
+    let userId = req.url.substr(1, req.url.indexOf('/'));
+    console.log(userId)
   }
 
   res.writeHead(statusCode, {'Content-Type': 'text/plain'});

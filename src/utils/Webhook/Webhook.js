@@ -2,6 +2,7 @@ const https = require('https');
 
 import config from '../../config'
 import SaveToDb from './SavetoDB.js'
+import TestIfLinkIsOk from './TestIfLinkIsOk.js'
 
 var app = require('http').createServer(handler);
 var statusCode = 200;
@@ -12,26 +13,34 @@ function handler (req, res) {
   var data = '';
 
   if (req.method == "POST") {
-    req.on('data', function(chunk) {
-      data += chunk;
-    });
+    if (TestIfLinkIsOk.TestLink(req.url)) {
+      //Data
+      req.on('data', function(chunk) {
+        data += chunk;
+      });
 
 
-    req.on('end', function() {
-      console.log('Received body data:');
-      console.log(data.toString());
-      //Db
+      req.on('end', function() {
+        console.log('Received body data:');
+        console.log(data.toString());
 
-      SaveToDb.SaveWHtoDB(data)
+        //Db
+        let DBUserID = TestIfLinkIsOk.TestLink(req.url);
+        let DBData = data.toString();
+        //SaveToDb
+        SaveToDb.SaveWHtoDB(DBData, DBUserID);
 
-      //Flie
- // var fs = require('fs');fs.writeFile("./webHooksDB", data, function(err) {if(err) {return console.log(err);}console.log("The file was saved!");});
-    });
-
+      });
+    } else {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+    }
   } else if (req.method == "GET") {
-    console.log(req.url);
-    let userId = req.url.substr(1, req.url.indexOf('/'));
-    console.log(userId)
+    if (!TestIfLinkIsOk.TestLink(req.url)) {
+      console.log('link is NOT Fine!');
+    } else {
+      console.log('link is Fine');
+    }
+
   }
 
   res.writeHead(statusCode, {'Content-Type': 'text/plain'});

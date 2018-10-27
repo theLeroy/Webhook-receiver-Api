@@ -5,7 +5,7 @@ import SaveToDb from './SavetoDB.js'
 import TestIfLinkIsOk from './TestIfLinkIsOk.js'
 
 var app = require('http').createServer(handler);
-var statusCode = 200;
+var statusCode = 403;
 
 app.listen(9000);
 
@@ -30,15 +30,19 @@ function handler (req, res) {
         //SaveToDb
         SaveToDb.SaveWHtoDB(DBData, DBUserID);
 
+        statusCode = 202;
       });
     } else {
-      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      statusCode = 400;
     }
   } else if (req.method == "GET") {
     if (!TestIfLinkIsOk.TestLink(req.url)) {
-      console.log('link is NOT Fine!');
+      statusCode = 400;
+      console.log('GET = link is NOT Fine!');
     } else {
-      console.log('link is Fine');
+      //change to 202
+      statusCode = 400;
+      console.log('GET = link is Fine');
     }
 
   }

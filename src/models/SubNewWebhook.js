@@ -3,7 +3,7 @@ import config from '../config'
 
 const Schema = mongoose.Schema
 
-export const WebhookConntentSchema = new Schema({
+export const SubNewWebhook = new Schema({
   _id: {
     type: Schema.Types.ObjectId,
     required: true,
@@ -23,10 +23,7 @@ export const WebhookConntentSchema = new Schema({
   },
 })
 
-WebhookConntentSchema.plugin(require('mongoose-lifecycle'));
-
 const WebhookConntent = mongoose.model('WebhookConntent', WebhookConntentSchema)
-
 
 // WebhookConntent.GetAllWebhooks = async (query) => {
 //   // let Conntent = await WebhookConntent.findOne(query)

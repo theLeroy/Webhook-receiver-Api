@@ -11,7 +11,6 @@ export default {
     VCAP_SERVICES,
     endpoints: {
       graphql: '/graphql',
-      webhook: '/wh',
       subscriptions: '/subscriptions',
       playground: process.env.NODE_ENV !== 'production' ? '/' : false
     },

@@ -2,7 +2,7 @@ export default
 `type WebhookConntent {
   _id: String
   UserId: String
-  intTime: Int
+  intTime: Float
   WebhookConntent: String
 }
 
@@ -18,5 +18,9 @@ type Mutation {
 }
 
 type Query {
-  WebhookByUser(userid: String): WebhookConntent
+  WebhookByUser(userid: String): [WebhookConntent]
+}
+
+type Subscription {
+  NewWebhookIncoming(userid: String): WebhookConntent
 }`

@@ -21,14 +21,14 @@ function handler (req, res) {
 
 
       req.on('end', function() {
-        console.log('Received body data:');
-        console.log(data.toString());
+        // console.log(data.toString());
 
         //Db
         let DBUserID = TestIfLinkIsOk.TestLink(req.url);
         let DBData = data.toString();
         //SaveToDb
         SaveToDb.SaveWHtoDB(DBData, DBUserID);
+        console.log('Webhook Recived under: ' + DBUserID);
 
         statusCode = 202;
       });

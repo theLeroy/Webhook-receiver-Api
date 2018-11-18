@@ -28,8 +28,8 @@ export default {
           const channel = Math.random().toString(36).substring(2, 15)
 
           WebhookConntent.on('afterInsert', function(input) {
-            console.log(input);
-            console.log('Change');
+            // console.log(input);
+            // console.log('Change');
             if(input.UserId === args.userid) {
               pubsub.publish(channel, { NewWebhookIncoming: input })
             }

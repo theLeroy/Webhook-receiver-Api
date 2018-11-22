@@ -1,4 +1,4 @@
-FROM node:10
+FROM node:11
 
 WORKDIR /usr/src/app
 
@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 9000
 
-CMD ["npm", "dev"]
+# RUN npm run initMockDb
+
+CMD [ "npm", "run", "dev" ]

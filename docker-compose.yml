@@ -6,6 +6,7 @@ services:
     build: .
     ports:
       - '9000:9000'
+      - '4000:4000'
     links:
       - mongo
   mongo:

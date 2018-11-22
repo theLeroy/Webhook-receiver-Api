@@ -16,6 +16,7 @@ export default {
     },
   },
   database: {
+    // url: VCAP_SERVICES ? VCAP_SERVICES.mongodbent[0].credentials.database_uri : 'mongodb://mongo:27017/Webhook',
     url: VCAP_SERVICES ? VCAP_SERVICES.mongodbent[0].credentials.database_uri : 'mongodb://localhost/Webhook',
     init: process.argv[2] || false
   },

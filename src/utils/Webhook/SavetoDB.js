@@ -1,5 +1,5 @@
 import config from '../../config'
-module.exports = {
+export default {
   SaveWHtoDB:(data, user) => {
 
     let WebhookConntent = require('../../models/WebhookConntent').default

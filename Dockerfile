@@ -9,11 +9,11 @@ WORKDIR /usr/src/app
 
 # RUN npm run build:prod
 
-COPY /dist .
+COPY . .
 
 EXPOSE 9000
 
 # RUN npm run initMockDb
 
 # CMD [ "npm", "run", "build:prod" ]
-CMD [ "node", "server.js" ]
+CMD [ "node", "dist/server.js" ]

@@ -23,4 +23,4 @@ services:
     ports:
       - '80:80'
     links:
-      - api
+      - api:4000

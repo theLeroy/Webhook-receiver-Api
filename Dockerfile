@@ -12,6 +12,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 EXPOSE 9000
+EXPOSE 4000
 
 # RUN npm run initMockDb
 

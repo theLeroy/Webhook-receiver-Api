@@ -46,8 +46,9 @@ function handler (req, res) {
     }
 
   }
-
+  
   res.writeHead(statusCode, {'Content-Type': 'text/plain'});
+  res.header("Access-Control-Allow-Origin", "*");
   res.end();
 }
 

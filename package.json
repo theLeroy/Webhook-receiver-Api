@@ -19,7 +19,7 @@
   "dependencies": {
     "contentful-webhook-listener": "^1.0.2",
     "graphql-yoga": "^1.16.2",
-    "mongoose": "^5.2.15",
+    "mongoose": "^5.7.5",
     "mongoose-lifecycle": "^1.0.0",
     "mongoose-unique-validator": "^2.0.1",
     "node-webhooks": "^1.4.0",
